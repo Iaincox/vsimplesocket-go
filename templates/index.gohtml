@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Very Simple Socket Test</title>
+    </head>
+    <body>
+        <script>
+            let socket = new WebSocket("ws://localhost:8080/ws")
+            console.log("attempting web socket connection")
+
+            socket.onopen = () =>{
+                console.log("Successfully opened socket");
+                socket.send("Hi from UX!");
+            }
+
+            socket.onclose = (event) =>{
+                console.log("Socket Connection Closed: ", event);
+            }
+
+            socket.onerror = (error) =>{
+                console.log("Socket Error: ", error);
+            }
+
+            socket.onmessage = (msg) =>{
+                console.log(msg);
+            }
+
+        </script>
+        <h1>Socket Test about to ....</h1>
+    </body>
+</html>
